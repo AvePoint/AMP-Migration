@@ -1,21 +1,14 @@
 
-# Dependencies
+# AMP Migration PowerShell
 
-Windows, PowerShell 5.1+
+## Dependencies
+PowerShell 5.1+
 
-PSSwaggerUtility 
+## Import PowerShell Modules
+Go to the folder you installed AMP Manager, open folder "PowerShell".
+Run Import-AMPMigration.ps1 with Administrator rights.
 
-reference 'https://www.powershellgallery.com/packages/PSSwaggerUtility' to get more details
-
-# How to import PSModule
-
-Import-Module '<your-service-root-folder>/AMPMigration
-
-###########################################################################################
-#                                                                                         #
-# if the certificate binding to your serivce is invalid, below code is required.          #
-#                                                                                         #
-###########################################################################################
+## Update Certificate Policy for PowerShell
 Add-Type @"
     using System.Net;
     using System.Security.Cryptography.X509Certificates;
@@ -26,4 +19,3 @@ Add-Type @"
     }
 "@
 [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
-###########################################################################################
