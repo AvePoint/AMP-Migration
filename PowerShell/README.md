@@ -9,6 +9,9 @@ Go to the folder you installed AMP Manager, open folder "PowerShell".
 Run Import-AMPMigration.ps1 with Administrator rights.
 
 ## Update Certificate Policy for PowerShell
+Run the scripts below, to update the certificae policy.
+
+```powershell
 Add-Type @"
     using System.Net;
     using System.Security.Cryptography.X509Certificates;
@@ -19,3 +22,4 @@ Add-Type @"
     }
 "@
 [System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
+```
